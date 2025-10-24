@@ -1,3 +1,15 @@
+TODO:
+    - Fan-In, Fan-Out 
+    - Worker Pool
+    - sync.errgroup
+    - Task-Level and Data-Level Concurrency
+    - Pipeline 
+    - context Package
+######################################################
+v0.1.2 - Pub/Sub 
+    x Commit: 2025-10-24 23:10
+    x PubSub types 
+    x PubSub example
 v0.1.1 - Validated FuncOpts 
     x Commit: 2025-10-24 15:18
     x func-opts with errors
