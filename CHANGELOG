@@ -1,11 +1,19 @@
 TODO:
-    - Fan-In, Fan-Out 
     - Worker Pool
-    - sync.errgroup
-    - Task-Level and Data-Level Concurrency
+    - Fan-In, Fan-Out 
     - Pipeline 
     - context Package
 ######################################################
+v0.1.4 - Concurrent
+    x Commit: 2025-10-25 13:10
+    x ConcurrentTasks (WaitGroup)
+    x ConcurrentRequests
+    x ConcurrentActions:
+        x No cancellation (errgroup)
+        x With Context and Timeout
+    x ConcurrentData:
+        x No errors
+        x With errors
 v0.1.3 - Pub/Sub Close 
     x Commit: 2025-10-25 08:12
     x Updated PubSub implementation

@@ -2,7 +2,10 @@ module github.com/roidaradal/go-patterns
 
 go 1.25.3
 
-require github.com/roidaradal/fn v0.4.18
+require (
+	github.com/roidaradal/fn v0.4.18
+	golang.org/x/sync v0.17.0
+)
 
 require (
 	github.com/gabriel-vasile/mimetype v1.4.10 // indirect
