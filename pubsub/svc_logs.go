@@ -2,12 +2,15 @@ package main
 
 import "fmt"
 
-func runLogService() {
-	logRequestCh := RequestBroker.Subscribe(E_END_REQUEST, 10)
+// Log service : Subscriber example
 
-	fmt.Println("[LOG] Service started...")
-	for rq := range logRequestCh {
+func runLogService() {
+	logRequest := RequestBroker.Subscribe(E_END_REQUEST, 10)
+
+	fmt.Println("[Log] Service started...")
+	for rq := range logRequest.Channel {
 		duration := rq.end.Sub(rq.start)
-		fmt.Printf("[LOG] Request: %s, Duration: %v\n", rq.name, duration)
+		fmt.Printf("[Log] Request: %s, Duration: %v\n", rq.name, duration)
 	}
+	fmt.Println("[Log] Service stopped...")
 }

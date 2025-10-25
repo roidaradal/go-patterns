@@ -1,28 +1,24 @@
 package main
 
 import (
+	"fmt"
+	"sync"
 	"time"
-
-	"github.com/roidaradal/krap"
 )
 
-const (
-	E_ADD_ACCOUNT    string = "add-account"
-	E_TOGGLE_ACCOUNT string = "toggle-account"
-	E_EDIT_ACCOUNT   string = "edit-account"
-	E_END_REQUEST    string = "end-request"
-)
-
-var (
-	AccountBroker = NewPubSub[*Account]()
-	RequestBroker = NewPubSub[*Request]()
-	ToggleBroker  = NewPubSub[*ToggleParams]()
-)
+// Main application - run services and simulate requests
 
 func main() {
-	go runCacheService()
-	go runMailService()
-	go runLogService()
+	// For graceful shutdown, use WaitGroup
+	// Otherwise, just run each service as a goroutine
+	// go runCacheService()
+	// go runMailService()
+	// go runLogService()
+
+	var wg sync.WaitGroup
+	wg.Go(runCacheService)
+	wg.Go(runMailService)
+	wg.Go(runLogService)
 
 	// Simulate requests
 	go func() {
@@ -34,12 +30,19 @@ func main() {
 		toggleAccount(&ToggleParams{"john", false})
 		time.Sleep(5 * time.Second)
 		toggleAccount(&ToggleParams{"john", true})
+		time.Sleep(4 * time.Second)
+
+		// Only for this example, so we can gracefully shutdown
+		AccountBroker.Close()
+		RequestBroker.Close()
+		ToggleBroker.Close()
 	}()
 
-	cfg := &krap.WebConfig{
-		Base: "/api/v1",
-		Port: 6666,
-	}
-	server, address := krap.WebServer(cfg, "dev")
-	server.Run(address)
+	// Normally, the web server here will prevent the
+	// all goroutines are asleep - deadlock problem
+	// server.Run()
+
+	// For graceful shutdown, use WaitGroup
+	wg.Wait()
+	fmt.Println("Exiting program...")
 }

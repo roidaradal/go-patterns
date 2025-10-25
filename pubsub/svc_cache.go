@@ -1,23 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/roidaradal/fn/check"
+	"github.com/roidaradal/fn/dict"
+)
+
+// Cache service : Subscriber example
 
 func runCacheService() {
-	addAccountCh := AccountBroker.Subscribe(E_ADD_ACCOUNT, 5)
-	editAccountCh := AccountBroker.Subscribe(E_EDIT_ACCOUNT, 5)
-	toggleAccountCh := ToggleBroker.Subscribe(E_TOGGLE_ACCOUNT, 2)
+	lineMap := make(dict.BoolMap)
+	_addAccount := subscribe(AccountBroker, E_ADD_ACCOUNT, 5, lineMap)
+	_editAccount := subscribe(AccountBroker, E_EDIT_ACCOUNT, 5, lineMap)
+	_toggleAccount := subscribe(ToggleBroker, E_TOGGLE_ACCOUNT, 2, lineMap)
 
 	fmt.Println("[Cache] Service started...")
 	for {
 		select {
-		case account := <-addAccountCh:
-			cacheAddAccount(account)
-		case account := <-editAccountCh:
-			cacheEditAccount(account)
-		case params := <-toggleAccountCh:
-			cacheToggleAccount(params)
+		case account, ok := <-_addAccount.Channel:
+			runOrClose(cacheAddAccount, account, ok, _addAccount, lineMap)
+		case account, ok := <-_editAccount.Channel:
+			runOrClose(cacheEditAccount, account, ok, _editAccount, lineMap)
+		case params, ok := <-_toggleAccount.Channel:
+			runOrClose(cacheToggleAccount, params, ok, _toggleAccount, lineMap)
+		}
+		// Exit if no more active channels
+		if check.AllFalse(dict.Values(lineMap)) {
+			break
 		}
 	}
+	fmt.Println("[Cache] Service stopped...")
 }
 
 func cacheAddAccount(account *Account) {

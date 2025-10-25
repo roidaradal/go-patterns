@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// Publisher example
+
 type Account struct {
 	code     string
 	name     string

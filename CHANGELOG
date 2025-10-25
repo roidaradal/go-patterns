@@ -6,6 +6,11 @@ TODO:
     - Pipeline 
     - context Package
 ######################################################
+v0.1.3 - Pub/Sub Close 
+    x Commit: 2025-10-25 08:12
+    x Updated PubSub implementation
+    x Remove web server, use WaitGroup
+    x Graceful shutdown - close channels and services
 v0.1.2 - Pub/Sub 
     x Commit: 2025-10-24 23:10
     x PubSub types 
