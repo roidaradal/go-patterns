@@ -16,6 +16,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/roidaradal/fn v0.4.18 h1:WLYhw51XsT/GlXdsLj/lx9kaX7YqjLdDTlVpCHIwVGc=
 github.com/roidaradal/fn v0.4.18/go.mod h1:HCDxjPpE3Ln7iuTWn/QpNaY3+BDKQagfMO0uowUZYfg=
+github.com/roidaradal/fn v0.4.19 h1:nIcG21Di6yLFhB68NA7BdK0JJPEMmFmo+1ZCg6ilEFU=
+github.com/roidaradal/fn v0.4.19/go.mod h1:HCDxjPpE3Ln7iuTWn/QpNaY3+BDKQagfMO0uowUZYfg=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 golang.org/x/crypto v0.42.0 h1:chiH31gIWm57EkTXpwnqf8qeuMUi0yekh6mT2AvFlqI=

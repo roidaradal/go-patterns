@@ -3,6 +3,10 @@ TODO:
     - Pipeline 
     - context Package
 ######################################################
+v0.1.6 - Fan-Out / Fan-In
+    x Commit: 2025-10-27 16:24
+    x Fan-Out
+    x Fan-In 
 v0.1.5 - Worker Pool 
     x Commit: 2025-10-27 13:26
     x Concurrent Workers
