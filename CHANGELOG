@@ -1,9 +1,11 @@
 TODO:
-    - Worker Pool
     - Fan-In, Fan-Out 
     - Pipeline 
     - context Package
 ######################################################
+v0.1.5 - Worker Pool 
+    x Commit: 2025-10-27 13:26
+    x Concurrent Workers
 v0.1.4 - Concurrent
     x Commit: 2025-10-25 13:10
     x ConcurrentTasks (WaitGroup)
