@@ -1,8 +1,10 @@
 TODO:
-    - Fan-In, Fan-Out 
-    - Pipeline 
     - context Package
 ######################################################
+v0.1.7 - Pipeline 
+    x Commit: 2025-10-27 18:10
+    x Pipeline
+    x Generate, Consume
 v0.1.6 - Fan-Out / Fan-In
     x Commit: 2025-10-27 16:24
     x Fan-Out
